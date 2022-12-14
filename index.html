@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+  <title>JavaScript Quiz</title>
+</head>
+
+<body>
+  <div class="game-box">
+    <div id="q-and-a-box">
+      <div class="question-box">
+        <img src="assets/pics/q-zero.png" alt="picture question" id="q-pic">
+      </div>
+
+      <div class="the-question">
+        <p>
+          Press "Start" to begin
+        </p>
+      </div>
+
+      <div id="answers-box">
+        <div class="row">
+          <div class="col">
+            <div>
+              <button class="ans no-hover" data-type="ans1">
+                <p>
+                  Answer 1
+                </p>
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <button class="ans no-hover" data-type="ans2">
+                <p>
+                  Answer 2
+                </p>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div>
+              <button class="ans no-hover" data-type="ans3">
+                <p>
+                  Answer 3
+                </p>
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <button class="ans no-hover" data-type="ans4">
+                <p>
+                  Answer 4
+                </p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scores-next-box">
+      <div class="scores-box">
+        <p class="scores">Correct Answers: <span id="score">0</span></p>
+        <p class="scores">Incorrect Answers: <span id="incorrect">0</span></p>
+      </div>
+      <div class="next-box">
+        <button type="button" name="button" id="next-button" data-type="next">Start</button>
+
+      </div>
+    </div>
+  </div>
+  <script src="assets/script.js"></script>
+</body>
+
+</html>
