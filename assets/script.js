@@ -103,6 +103,7 @@ let questions = [{
       let nextBtn = document.getElementById('next-button');
       nextBtn.addEventListener('click', function() {
         console.log('The NextBtn was pressed')
+        
         // get the first question from the questions array
         for (let i = 0; i < questions.length; i++) {
         let question = questions[i];
