@@ -121,3 +121,11 @@ p {
 .scores {
   margin: 10px 0;
 }
+
+#score-page-box {
+  width: 50%;
+  margin: 150px auto;
+  border: 5px solid #CDF0EA;
+  border-radius: 25px;
+  padding: 10px;
+}

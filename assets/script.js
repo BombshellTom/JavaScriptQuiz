@@ -98,38 +98,102 @@ let answers = [questions[0].ans2,
 // place to log the clicked answer and compare to the answers array above
 let selectedAnswers = [];
 
+//name start/nxt question button
+let startButton = document.getElementById('next-button');
 
 // Wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Loaded");
+  document.getElementById("next-button").textContent="Start";
 })
 
-let startButton = document.getElementById('next-button');
+let currentQuestionIndex = -1;
 
-startButton.addEventListener('click', loadFirstQuestion);
+function displayQuestion() {
+  let question = questions[currentQuestionIndex];
 
-let currentQuestion = 0;
+  // Update the question text and picture
+  document.getElementById("the-question").textContent = question.question;
+  document.getElementById("q-pic").src = question.sorc;
+  // Update the answer buttons
+  document.getElementById("answer-1").textContent = question.ans1;
+  document.getElementById("answer-2").textContent = question.ans2;
+  document.getElementById("answer-3").textContent = question.ans3;
+  document.getElementById("answer-4").textContent = question.ans4;
 
-function loadFirstQuestion() {
-  // Get references to the elements that need to be updated
-  let imageElement = document.getElementById('q-pic');
-  let questionElement = document.getElementById('the-question');
-  let answer1Button = document.querySelector('[data-type="ans1"]');
-  let answer2Button = document.querySelector('[data-type="ans2"]');
-  let answer3Button = document.querySelector('[data-type="ans3"]');
-  let answer4Button = document.querySelector('[data-type="ans4"]');
-
-  // Update the elements with the first question's data
-  imageElement.src = questions[0].sorc;
-  questionElement.textContent = questions[0].question;
-  answer1Button.textContent = questions[0].ans1;
-  answer2Button.textContent = questions[0].ans2;
-  answer3Button.textContent = questions[0].ans3;
-  answer4Button.textContent = questions[0].ans4;
+  // Update the text of the "Next Question" button
+  if (currentQuestionIndex === questions.length - 1) {
+    document.getElementById("next-button").textContent = "Finish";
+  } else {
+    document.getElementById("next-button").textContent = "Next Question";
+  }
 }
 
-let answerButtons = document.querySelectorAll('.ans');
+// Add a click event listener to the "Next Question" button
+document.getElementById("next-button").addEventListener("click", function() {
+  // Increment the current question index
+  currentQuestionIndex++;
 
-for (let i = 0; i < answerButtons.length; i++) {
-  answerButtons[i].addEventListener('click', storeAnswer);
+  // If we have reached the last question, reset the index to 0
+  if (currentQuestionIndex >= questions.length) {
+    currentQuestionIndex = 0;
+  }
+
+  // Display the next question
+  displayQuestion();
+  // Check if the selected answer is correct
+  checkAnswer();
+});
+
+// Get all the answer buttons
+let answerButtons = document.querySelectorAll(".ans");
+
+function checkAnswer() {
+  let correctAnswer = answers[currentQuestionIndex];
+
+  if (selectedAnswer === correctAnswer) {
+    // Answer is correct
+    console.log("Correct!");
+    alert('Correct!')
+  } else {
+    // Answer is incorrect
+    console.log("Incorrect!");
+    alert('Alas, sadly not')
+  }
+}
+
+// Add an event listener to each button
+answerButtons.forEach(button => {
+  button.addEventListener("click", function() {
+    // Get the selected answer from the button's data attribute
+    let selectedAnswer = button.dataset.type;
+
+    // Add the selected answer to the list of selected answers
+    selectedAnswers.push(selectedAnswer);
+
+
+  });
+});
+
+function checkAnswer() {
+  let correctAnswer = answers[currentQuestionIndex];
+
+  if (selectedAnswer === correctAnswer) {
+    // Answer is correct
+    console.log("Correct!");
+  } else {
+    // Answer is incorrect
+    console.log("Incorrect!");
+  }
+}
+
+function updateScores() {
+  let scoreElement = document.getElementById("score");
+  let incorrectElement = document.getElementById("incorrect");
+
+  let currentScore = parseInt(scoreElement.textContent);
+  let currentIncorrect = parseInt(incorrectElement.textContent);
+
+  scoreElement.textContent = currentScore + 1;
+  incorrectElement.textContent = currentIncorrect + 1;
 }
