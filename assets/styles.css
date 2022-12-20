@@ -48,15 +48,18 @@ p {
   height: 50px;
   border: 3px dashed #FAF4B7;
   margin: 0 auto;
-  padding: auto;
+  padding: 10px 0 0 0;
 }
 
 #answers-box {
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
   width: 70%;
   margin: 0 auto;
+/*setting display to None so I can drop in answer boxes with JavaScript*/
+  display: none;
 }
+
 
 .row {
   display: flex;
