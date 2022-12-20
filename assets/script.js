@@ -1,3 +1,8 @@
+//score elements defined
+let scoreElement = document.getElementById("score");
+let incorrectElement = document.getElementById("incorrect");
+let userScore = 0;
+
 // an array for the quetions and answers
 let questions = [{
   qno: 0,
@@ -89,16 +94,23 @@ let questions = [{
   ans3: "V",
   ans4: "W",
   correctAnswer: "W"
-
-}];
+}, {
+  qno: 10,
+  sorc: "assets/pics/thats-all-folks.png",
+  question: `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`,
+}
+];
 
 //name start/nxt question button
 let startButton = document.getElementById('next-button');
-let dataContainer = document.getElementById("q-and-a-box")
+let dataContainer = document.getElementById("q-and-a-box");
+let questionContainer = document.getElementById('the-question');
+let picContainer = document.getElementById('q-pic');
 
 // Wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Loaded");
+  console.log('User Score is:', userScore);
   document.getElementById("next-button").textContent = "Start";
   startButton.disabled = false;
 
@@ -127,10 +139,23 @@ answerButtons.forEach(button => button.disabled = false);
 
   // Update the text of the "Next Question" button
   if (currentQuestionIndex === questions.length - 1) {
+
+    let finalQuestion = questions[currentQuestionIndex];
+    finalQuestion.question = `This is the end of the quiz.
+                              Out of a possible 10, you scored ${userScore}`;
+    questionContainer.innerHTML = finalQuestion.question;
+    document.getElementById("q-pic").src = 'assets/pics/thats-all-folks.png';
     document.getElementById("next-button").textContent = "Restart";
+    document.getElementById("answers-box").style.display = "none";
   } else {
     document.getElementById("next-button").textContent = "Next Question";
   }
+}
+
+if (currentQuestionIndex === questions.length - 1) {
+  let finalQuestion = questions[currentQuestionIndex];
+  finalQuestion.question = `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`;
+  questionContainer.innerHTML = finalQuestion.question;
 }
 
 // Add a click event listener to the "Next Question" button
@@ -175,26 +200,28 @@ answerButtons.forEach(button => {
     //check if it is correct
     let isCorrect = e.target.innerText === correctAnswer
 
-    console.log(`User clicked ${selectedAnswer}`)
-    console.log(`The correct choice is ${correctAnswer}`)
-    //console.log(isCorrect, "<===isCorrect")
+    console.log(`User clicked ${selectedAnswer}`);
+    console.log(`The correct choice is ${correctAnswer}`);
+    console.log('User score is', userScore);
 
    // Update the score
-    let scoreElement = document.getElementById("score");
-    let incorrectElement = document.getElementById("incorrect");
 
     let currentScore = parseInt(scoreElement.textContent);
     let currentIncorrect = parseInt(incorrectElement.textContent);
 
+
     if (isCorrect) {
       scoreElement.textContent = currentScore + 1;
-      console.log("Adding 1 to the score");
+      userScore = userScore +1;
+      console.log(`Adding 1 to the score. Score is now ${userScore}`);
       button.style.backgroundColor = '#ADE792';
+
 
     } else {
       incorrectElement.textContent = currentIncorrect + 1;
       console.log("Adding 1 to the incorrect tally");
-      button.style.backgroundColor = '#FF4A4A';
+      button.style.backgroundColor = '#FF4A4A'
+
     }
     answerButtons.forEach(button => button.disabled = true);
     startButton.disabled = false;
