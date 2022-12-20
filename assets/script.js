@@ -147,6 +147,11 @@ document.getElementById("next-button").addEventListener("click", function() {
   displayQuestion();
   startButton.disabled = true;
 
+//change color of buttons back
+  document.querySelectorAll('.ans').forEach(function(element) {
+  element.style.backgroundColor = '#CDF0EA';
+});
+
 });
 
 // Get all the answer buttons
@@ -157,8 +162,6 @@ let answerButtons = document.querySelectorAll(".ans");
 answerButtons.forEach(button => {
 
   button.addEventListener("click", function(e) {
-
-
 
     // Identify the selected answer from the button's data-type attribute
     let selectedAnswer = button.dataset.type;
@@ -185,10 +188,14 @@ answerButtons.forEach(button => {
 
     if (isCorrect) {
       scoreElement.textContent = currentScore + 1;
-      console.log("Adding 1 to the score")
+      console.log("Adding 1 to the score");
+      button.style.backgroundColor = '#ADE792';
+
     } else {
       incorrectElement.textContent = currentIncorrect + 1;
-      console.log("Adding 1 to the incorrect tally")
+      console.log("Adding 1 to the incorrect tally");
+      button.style.backgroundColor = '#FF4A4A'
+
     }
     answerButtons.forEach(button => button.disabled = true);
     startButton.disabled = false;
