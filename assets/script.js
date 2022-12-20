@@ -194,8 +194,7 @@ answerButtons.forEach(button => {
     } else {
       incorrectElement.textContent = currentIncorrect + 1;
       console.log("Adding 1 to the incorrect tally");
-      button.style.backgroundColor = '#FF4A4A'
-
+      button.style.backgroundColor = '#FF4A4A';
     }
     answerButtons.forEach(button => button.disabled = true);
     startButton.disabled = false;
