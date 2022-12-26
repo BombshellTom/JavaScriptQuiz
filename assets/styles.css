@@ -72,10 +72,6 @@ p {
   width: 50%;
 }
 
-#answers-box button:hover {
-  background-color: #62B6B7;
-}
-
 #answers-box button {
   background-color: #CDF0EA;
   width: 95%;
@@ -87,6 +83,10 @@ p {
 
 .answer-button.selected {
   background-color: #62B6B7;
+}
+
+#answers-box button:hover {
+  background-color: #62B6B7 !important;
 }
 
 .next-box {
@@ -127,10 +127,46 @@ p {
   margin: 10px 0;
 }
 
-#score-page-box {
-  width: 50%;
-  margin: 150px auto;
-  border: 5px solid #CDF0EA;
-  border-radius: 25px;
-  padding: 10px;
+@media (max-width: 900px) {
+  .game-box {
+    width: 100%;
+  }
+  #q-and-a-box {
+    width: 90%;
+  }
+  #q-pic {
+    max-width: 90%;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .col {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .game-box {
+    width: 100%;
+  }
+
+  #q-and-a-box {
+    width: 90%;
+  }
+
+  #q-pic {
+    max-width: 100%;
+  }
+
+  #the-question {
+    font-size: 85%;
+  }
+
+  .row {
+    width: 100%;
+  }
+
+  .col {
+    width: 100%;
+  }
 }

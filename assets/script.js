@@ -98,8 +98,7 @@ let questions = [{
   qno: 10,
   sorc: "assets/pics/thats-all-folks.png",
   question: `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`,
-}
-];
+}];
 
 //name start/nxt question button
 let startButton = document.getElementById('next-button');
@@ -121,11 +120,11 @@ let currentQuestionIndex = -1;
 function displayQuestion() {
   let question = questions[currentQuestionIndex];
 
-//get the answer boxes back
-document.getElementById("answers-box").style.display = "block";
+  //get the answer boxes back
+  document.getElementById("answers-box").style.display = "block";
 
-//allow the answer buttons to be clicked
-answerButtons.forEach(button => button.disabled = false);
+  //allow the answer buttons to be clicked
+  answerButtons.forEach(button => button.disabled = false);
 
   // Update the question text and picture
   dataContainer.setAttribute('data-id', question.qno);
@@ -141,21 +140,19 @@ answerButtons.forEach(button => button.disabled = false);
   if (currentQuestionIndex === questions.length - 1) {
 
     let finalQuestion = questions[currentQuestionIndex];
-    finalQuestion.question = `This is the end of the quiz.
-                              Out of a possible 10, you scored ${userScore}`;
+    finalQuestion.question = `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`;
     questionContainer.innerHTML = finalQuestion.question;
     document.getElementById("q-pic").src = 'assets/pics/thats-all-folks.png';
     document.getElementById("next-button").textContent = "Restart";
     document.getElementById("answers-box").style.display = "none";
+    // Add an event listener to the "Restart" button to reload the page when clicked
+    document.getElementById("next-button").addEventListener("click", function() {
+      window.location.reload();
+
+    });
   } else {
     document.getElementById("next-button").textContent = "Next Question";
   }
-}
-
-if (currentQuestionIndex === questions.length - 1) {
-  let finalQuestion = questions[currentQuestionIndex];
-  finalQuestion.question = `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`;
-  questionContainer.innerHTML = finalQuestion.question;
 }
 
 // Add a click event listener to the "Next Question" button
@@ -163,19 +160,20 @@ document.getElementById("next-button").addEventListener("click", function() {
   // Increment the current question index
   currentQuestionIndex++;
 
-  // If we have reached the last question, reset the index to 0
-  if (currentQuestionIndex >= questions.length) {
-    currentQuestionIndex = 0;
-  }
-
   // Display the next question
   displayQuestion();
   startButton.disabled = true;
 
-//change color of buttons back
+  if (currentQuestionIndex === questions.length - 1) {
+    startButton.disabled = false;
+  }
+
+  //change color of buttons back
   document.querySelectorAll('.ans').forEach(function(element) {
-  element.style.backgroundColor = '#CDF0EA';
-});
+    element.style.backgroundColor = '#CDF0EA';
+
+
+  });
 
 });
 
@@ -204,7 +202,7 @@ answerButtons.forEach(button => {
     console.log(`The correct choice is ${correctAnswer}`);
     console.log('User score is', userScore);
 
-   // Update the score
+    // Update the score
 
     let currentScore = parseInt(scoreElement.textContent);
     let currentIncorrect = parseInt(incorrectElement.textContent);
@@ -212,7 +210,7 @@ answerButtons.forEach(button => {
 
     if (isCorrect) {
       scoreElement.textContent = currentScore + 1;
-      userScore = userScore +1;
+      userScore = userScore + 1;
       console.log(`Adding 1 to the score. Score is now ${userScore}`);
       button.style.backgroundColor = '#ADE792';
 
