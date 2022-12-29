@@ -160,6 +160,8 @@ p {
 
   #the-question {
     font-size: 85%;
+    padding: 5px 0 0 0;
+    max-width: 90%;
   }
 
   .row {
@@ -168,5 +170,9 @@ p {
 
   .col {
     width: 100%;
+  }
+
+  .scores-next-box {
+    max-width: 99%;
   }
 }
