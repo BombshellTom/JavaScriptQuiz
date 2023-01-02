@@ -140,7 +140,7 @@ function displayQuestion() {
   if (currentQuestionIndex === questions.length - 1) {
 
     let finalQuestion = questions[currentQuestionIndex];
-    finalQuestion.question = `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`;
+    finalQuestion.question = `This is the end of the quiz. Out of a possible 10, you scored ${userScore}.`;
     questionContainer.innerHTML = finalQuestion.question;
     document.getElementById("q-pic").src = 'assets/pics/thats-all-folks.png';
     document.getElementById("next-button").textContent = "Restart";
