@@ -54,10 +54,9 @@ p {
 }
 
 #answers-box {
-  /*display: flex;
-  flex-direction: column;*/
   width: 70%;
   margin: 0 auto;
+  
 /*setting display to None so I can drop in answer boxes with JavaScript*/
   display: none;
 }
