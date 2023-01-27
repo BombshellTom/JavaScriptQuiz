@@ -34,7 +34,7 @@ let questions = [{
 }, {
   qno: 3,
   question: "In the country depicted by the flag, what letter would be on the number plate?",
-  sorc: "asset/images/q4.png",
+  sorc: "assets/images/q4.png",
   ans1: "D",
   ans2: "E",
   ans3: "S",
@@ -179,6 +179,7 @@ document.getElementById("next-button").addEventListener("click", function() {
 let answerButtons = document.querySelectorAll(".ans");
 
 
+// Process to identify the correct answer and adjust score accordingly
 // Add an event listener to each button
 answerButtons.forEach(button => {
 
@@ -196,12 +197,7 @@ answerButtons.forEach(button => {
     //check if it is correct
     let isCorrect = e.target.innerText === correctAnswer
 
-    console.log(`User clicked ${selectedAnswer}`);
-    console.log(`The correct choice is ${correctAnswer}`);
-    console.log('User score is', userScore);
-
     // Update the score
-
     let currentScore = parseInt(scoreElement.textContent);
     let currentIncorrect = parseInt(incorrectElement.textContent);
 
@@ -214,7 +210,9 @@ answerButtons.forEach(button => {
 
     } else {
       incorrectElement.textContent = currentIncorrect + 1;
-      button.style.backgroundColor = '#FF4A4A'
+      button.style.backgroundColor = '#FF4A4A';
+      //notify user of correct answer
+      alert("Incorrect! The correct answer is " + correctAnswer);
 
     }
     answerButtons.forEach(button => button.disabled = true);
