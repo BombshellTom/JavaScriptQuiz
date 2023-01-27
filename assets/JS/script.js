@@ -140,7 +140,7 @@ function displayQuestion() {
     let finalQuestion = questions[currentQuestionIndex];
     finalQuestion.question = `This is the end of the quiz. Out of a possible 10, you scored ${userScore}.`;
     questionContainer.innerHTML = finalQuestion.question;
-    document.getElementById("q-pic").src = 'assets/pics/thats-all-folks.png';
+    document.getElementById("q-pic").src = 'assets/images/thats-all-folks.png';
     document.getElementById("next-button").textContent = "Restart";
     document.getElementById("answers-box").style.display = "none";
     // Add an event listener to the "Restart" button to reload the page when clicked
@@ -206,6 +206,7 @@ answerButtons.forEach(button => {
       scoreElement.textContent = currentScore + 1;
       userScore = userScore + 1;
       button.style.backgroundColor = '#ADE792';
+      alert("Correct!")
 
 
     } else {
