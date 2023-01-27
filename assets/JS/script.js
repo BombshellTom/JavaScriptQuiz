@@ -7,7 +7,7 @@ let userScore = 0;
 let questions = [{
   qno: 0,
   question: "These four actors played which character in a well know film series?",
-  sorc: "assets/pics/q1.png",
+  sorc: "assets/images/q1.png",
   ans1: "P",
   ans2: "Q",
   ans3: "R",
@@ -16,7 +16,7 @@ let questions = [{
 }, {
   qno: 1,
   question: "These four actors played which character in the same film series?",
-  sorc: "assets/pics/q2.png",
+  sorc: "assets/images/q2.png",
   ans1: "J",
   ans2: "K",
   ans3: "L",
@@ -25,7 +25,7 @@ let questions = [{
 }, {
   qno: 2,
   question: "In the country depicted by the flag, what letter would be on the number plate?",
-  sorc: "assets/pics/q3.png",
+  sorc: "assets/images/q3.png",
   ans1: "D",
   ans2: "E",
   ans3: "F",
@@ -34,7 +34,7 @@ let questions = [{
 }, {
   qno: 3,
   question: "In the country depicted by the flag, what letter would be on the number plate?",
-  sorc: "assets/pics/q4.png",
+  sorc: "asset/images/q4.png",
   ans1: "D",
   ans2: "E",
   ans3: "S",
@@ -43,7 +43,7 @@ let questions = [{
 }, {
   qno: 4,
   question: "In the country depicted by the flag, what letter would be on the number plate?",
-  sorc: "assets/pics/q5.png",
+  sorc: "assets/images/q5.png",
   ans1: "H",
   ans2: "I",
   ans3: "T",
@@ -52,7 +52,7 @@ let questions = [{
 }, {
   qno: 5,
   question: "In the country depicted by the flag, what letter would be on the number plate?",
-  sorc: "assets/pics/q6.png",
+  sorc: "assets/images/q6.png",
   ans1: "F",
   ans2: "G",
   ans3: "H",
@@ -61,7 +61,7 @@ let questions = [{
 }, {
   qno: 6,
   question: "What letter did the Romans use for their number '500'?",
-  sorc: "assets/pics/q7.png",
+  sorc: "assets/images/q7.png",
   ans1: "L",
   ans2: "V",
   ans3: "D",
@@ -70,7 +70,7 @@ let questions = [{
 }, {
   qno: 7,
   question: "What is Mariah Carey's perfume called?",
-  sorc: "assets/pics/q8.png",
+  sorc: "assets/images/q8.png",
   ans1: "C",
   ans2: "D",
   ans3: "M",
@@ -79,7 +79,7 @@ let questions = [{
 }, {
   qno: 8,
   question: "What is the chemical symbol of the element Potassium?",
-  sorc: "assets/pics/q9.png",
+  sorc: "assets/images/q9.png",
   ans1: "K",
   ans2: "E",
   ans3: "P",
@@ -88,7 +88,7 @@ let questions = [{
 }, {
   qno: 9,
   question: "What is the chemical symbol of the element Tungsten?",
-  sorc: "assets/pics/q10.png",
+  sorc: "assets/images/q10.png",
   ans1: "T",
   ans2: "U",
   ans3: "V",
@@ -96,7 +96,7 @@ let questions = [{
   correctAnswer: "W"
 }, {
   qno: 10,
-  sorc: "assets/pics/thats-all-folks.png",
+  sorc: "assets/images/thats-all-folks.png",
   question: `This is the end of the quiz. Out of a possible 10, you scored ${userScore}`,
 }];
 
@@ -108,8 +108,6 @@ let picContainer = document.getElementById('q-pic');
 
 // Wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("Loaded");
-  console.log('User Score is:', userScore);
   document.getElementById("next-button").textContent = "Start";
   startButton.disabled = false;
 
@@ -190,7 +188,7 @@ answerButtons.forEach(button => {
     let selectedAnswer = button.dataset.type;
 
     //Identify the question being asked
-    var questionId = dataContainer.getAttribute('data-id');
+    let questionId = dataContainer.getAttribute('data-id');
 
     //Identify the correct answer from the questions array
     let correctAnswer = questions[questionId].correctAnswer
@@ -211,13 +209,11 @@ answerButtons.forEach(button => {
     if (isCorrect) {
       scoreElement.textContent = currentScore + 1;
       userScore = userScore + 1;
-      console.log(`Adding 1 to the score. Score is now ${userScore}`);
       button.style.backgroundColor = '#ADE792';
 
 
     } else {
       incorrectElement.textContent = currentIncorrect + 1;
-      console.log("Adding 1 to the incorrect tally");
       button.style.backgroundColor = '#FF4A4A'
 
     }
